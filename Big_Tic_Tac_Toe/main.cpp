@@ -92,6 +92,58 @@ int main()
             }
         }
     }
+     // Clear the window
+        window.clear(sf::Color::White);
+
+        // Draw the horizontal lines
+        for (int i = 0; i <= 9; i++)
+        {horizontalLine.setPosition(0, i * 100);
+        window.draw(horizontalLine);
+         horizontalLine.setFillColor(sf::Color::Black);
+
+            if (i==2|| i==5)
+            {window.draw(horizontalLine);
+         horizontalLine.setFillColor(sf::Color::Red);}
+        }
+
+        // Draw the vertical lines
+        for (int i = 0; i <= 9; i++)
+        {verticalLine.setPosition(i * 100, 0);
+        window.draw(verticalLine);
+        verticalLine.setFillColor(sf::Color::Black);
+
+         if (i==2|| i==5)
+            {window.draw(verticalLine);
+         verticalLine.setFillColor(sf::Color::Red);}
+        }
+
+        // Draw the X's and O's
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                if (board[i][j] == 1)
+                {
+                    xSprite.setPosition(j * 100 + 25, i * 100 + 25);
+                    window.draw(xSprite);
+                }
+                else if (board[i][j] == 2)
+                {
+                    oSprite.setPosition(j * 100 + 25, i * 100 + 25);
+                    window.draw(oSprite);
+                }
+            }
+        }
+        // Display the current player's turn
+        sf::Font font;
+        font.loadFromFile("Resources\\font.ttf");
+        sf::Text text;
+        text.setFont(font);
+        text.setString(player == 1 ? "X's turn" : "O's turn");
+        text.setCharacterSize(40);
+        text.setPosition(950, 10);
+        text.setFillColor(sf::Color::Blue);
+        window.draw(text);
 
 
 }
