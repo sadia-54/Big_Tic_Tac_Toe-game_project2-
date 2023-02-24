@@ -220,7 +220,69 @@ int main()
             winner1=3;
         }
     
-    
+     // win for subgame2
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i][3] != 0 && board[i][3] == board[i][4] && board[i][4] == board[i][5])
+            {
+                winner2 = board[i][3];
+                break;
+            }for (int j = 3; j < 6; j++)
+            if (board[0][j] != 0 && board[0][j] == board[1][j] && board[1][j] == board[2][j])
+            {
+                winner2 = board[0][j];
+                break;
+            }
+        }
+        if (board[0][3] != 0 && board[0][3] == board[1][4] && board[1][4] == board[2][5])
+        {
+            winner2 = board[0][3];
+        }
+        if (board[0][5] != 0 && board[0][5] == board[1][4] && board[1][4] == board[2][3])
+        {
+            winner2 = board[0][5];
+        }
+
+        // If there is a winner, display the winner
+        if (winner2 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner2 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(8*50, 120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+        }
+
+        // If the board is full with no winner
+        bool tie2 = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 3; j < 6; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie2 = false;
+                    break;
+                }
+            }
+        }
+        if (tie2)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(8*50, 120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner2=3;
+        }
 
 
 }
