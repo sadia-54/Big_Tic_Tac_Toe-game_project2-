@@ -475,6 +475,71 @@ int main()
             window.draw(text);
             winner5=3;
         }
+    
+    // win for subgame6
+        for (int i = 3; i < 6; i++)
+        {
+            if (board[i][6] != 0 && board[i][6] == board[i][7] && board[i][7] == board[i][8])
+            {
+                winner6 = board[i][6];
+                break;
+            }for (int j = 6; j < 9; j++)
+            if (board[3][j] != 0 && board[3][j] == board[4][j] && board[4][j] == board[5][j])
+            {
+                winner6 = board[3][j];
+                break;
+            }
+        }
+        if (board[3][6] != 0 && board[3][6] == board[4][7] && board[4][7] == board[5][8])
+        {
+            winner6 = board[3][6];
+        }
+        if (board[3][8] != 0 && board[3][8] == board[4][7] && board[4][7] == board[5][6])
+        {
+            winner6 = board[3][8];
+        }
+
+        // If there is a winner, display the winner
+        if (winner6 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner6 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(14*50, 3*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+
+        }
+
+        bool tie6 = true;
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 6; j < 9; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie6 = false;
+                    break;
+                }
+            }
+        }
+        if (tie6)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(12*50, 3*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner6=3;
+
+        }
 
 
 }
