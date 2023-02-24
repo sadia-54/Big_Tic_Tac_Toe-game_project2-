@@ -283,6 +283,200 @@ int main()
             window.draw(text);
             winner2=3;
         }
+    
+             // win for subgame3
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i][6] != 0 && board[i][6] == board[i][7] && board[i][7] == board[i][8])
+            {
+                winner3 = board[i][6];
+                break;
+            }for (int j = 6; j < 9; j++)
+            if (board[0][j] != 0 && board[0][j] == board[1][j] && board[1][j] == board[2][j])
+            {
+                winner3 = board[0][j];
+                break;
+            }
+        }
+        if (board[0][6] != 0 && board[0][6] == board[1][7] && board[1][7] == board[2][8])
+        {
+            winner3 = board[0][6];
+        }
+        if (board[0][8] != 0 && board[0][8] == board[1][7] && board[1][7] == board[2][6])
+        {
+            winner3 = board[0][8];
+        }
+
+        // If there is a winner, display the winner
+        if (winner3 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner3 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(14*50, 120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+        }
+
+        // If the board is full with no winner, it's a tie
+        bool tie3 = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 6; j < 9; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie3 = false;
+                    break;
+                }
+            }
+        }
+        if (tie3)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(14*50, 120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner3=3;
+        }
+    
+            // win for subgame4
+         for (int i = 3; i < 6; i++)
+        {
+            if (board[i][0] != 0 && board[i][0] == board[i][1] && board[i][1] == board[i][2])
+            {
+                winner4 = board[i][0];
+                break;
+            }
+                for (int j = 0; j < 3; j++)
+            {if (board[3][j] != 0 && board[3][j] == board[4][j] && board[4][j] == board[5][j])
+            {
+                winner4 = board[3][j];
+                break;
+            }}
+        }
+        if (board[3][0] != 0 && board[3][0] == board[4][1] && board[4][1] == board[5][2])
+        {
+            winner4 = board[3][0];
+        }
+        if (board[3][2] != 0 && board[3][2] == board[4][1] && board[4][1] == board[5][0])
+        {
+            winner4 = board[3][2];
+        }
+
+        // If there is a winner, display the winner
+        if (winner4 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner4 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(50, 3*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+        }
+
+        // If the board is full with no winner, it's a tie
+        bool tie4 = true;
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie4 = false;
+                    break;
+                }
+            }
+        }
+        if (tie4)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(50, 3*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner4=3;
+        }
+    
+              // win for subgame5
+        for (int i = 3; i < 6; i++)
+        {
+            if (board[i][3] != 0 && board[i][3] == board[i][4] && board[i][4] == board[i][5])
+            {
+                winner5 = board[i][3];
+                break;
+            }for (int j = 3; j < 6; j++)
+            if (board[3][j] != 0 && board[3][j] == board[4][j] && board[4][j] == board[5][j])
+            {
+                winner5 = board[3][j];
+                break;
+            }
+        }
+        if (board[3][3] != 0 && board[3][3] == board[4][4] && board[4][4] == board[5][5])
+        {
+            winner5 = board[3][3];
+        }
+        if (board[3][5] != 0 && board[3][5] == board[4][4] && board[4][4] == board[5][3])
+        {
+            winner5 = board[3][5];
+        }
+
+        // If there is a winner, display the winner
+        if (winner5 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner5 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(8*50, 3*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+        }
+
+        bool tie5 = true;
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 3; j < 6; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie5 = false;
+                    break;
+                }
+            }
+        }
+        if (tie5)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(8*50, 3*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner5=3;
+        }
 
 
 }
+
+
