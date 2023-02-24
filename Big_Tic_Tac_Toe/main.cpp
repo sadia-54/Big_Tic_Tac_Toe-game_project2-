@@ -40,13 +40,58 @@ int main()
     sf::Sprite oSprite(oTexture);
     oSprite.setScale(0.5, 0.5);
 
-        // Create the game board
+        // create the game board
     int board[9][9] = {0};
 
-    // Create a variable to keep track of whose turn it is
+    // create a variable to keep track of whose turn it is
     int player = 1;
+      // Start the game loop
+    while (window.isOpen())
+    {
+        // Process events
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Close window: exit
+            if (event.type == sf::Event::Closed)
+                window.close();
 
+            // Handle mouse button press
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                int mouseX = sf::Mouse::getPosition(window).x;
+                int mouseY = sf::Mouse::getPosition(window).y;
 
+                // Determine which cell was clicked
+                int row = -1, col = -1;
+                if (mouseX < 100) col = 0;
+                else if (mouseX < 200) col = 1;
+                else if (mouseX < 300) col = 2;
+                else if (mouseX < 400) col = 3;
+                else if (mouseX < 500) col = 4;
+                else if (mouseX < 600) col = 5;
+                else if (mouseX < 700) col = 6;
+                else if (mouseX < 800) col = 7;
+                else if (mouseX < 900) col = 8;
+                if (mouseY < 100) row = 0;
+                else if (mouseY < 200) row = 1;
+                else if (mouseY < 300) row = 2;
+                else if (mouseY < 400) row = 3;
+                else if (mouseY < 500) row = 4;
+                else if (mouseY < 600) row = 5;
+                else if (mouseY < 700) row = 6;
+                else if (mouseY < 800) row = 7;
+                else if (mouseY < 900) row = 8;
+
+                // If a valid cell was clicked, place the player's symbol there
+                if (row != -1 && col != -1 && board[row][col] == 0)
+                {
+                    board[row][col] = player;
+                    player = player == 1 ? 2 : 1;
+                }
+            }
+        }
+    }
 
 
 }
