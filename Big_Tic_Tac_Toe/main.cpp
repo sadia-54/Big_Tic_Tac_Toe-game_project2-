@@ -30,5 +30,14 @@ int main()
          verticalLine.setFillColor(sf::Color::Red);}
 
     }
+         // Create the X and O textures
+    sf::Texture xTexture;
+    xTexture.loadFromFile("Resources\\cross.png");
+    sf::Sprite xSprite(xTexture);
+    xSprite.setScale(0.5, 0.5);
+    sf::Texture oTexture;
+    oTexture.loadFromFile("Resources\\circle.png");
+    sf::Sprite oSprite(oTexture);
+    oSprite.setScale(0.5, 0.5);
 
 }
