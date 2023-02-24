@@ -91,7 +91,7 @@ int main()
                 }
             }
         }
-    }
+
      // Clear the window
         window.clear(sf::Color::White);
 
@@ -144,8 +144,8 @@ int main()
         text.setPosition(950, 10);
         text.setFillColor(sf::Color::Blue);
         window.draw(text);
-    
-    
+
+
      // Check for a winner
         int winner1 = 0;
         int winner2 = 0;
@@ -219,7 +219,7 @@ int main()
             window.draw(text);
             winner1=3;
         }
-    
+
      // win for subgame2
         for (int i = 0; i < 3; i++)
         {
@@ -283,7 +283,7 @@ int main()
             window.draw(text);
             winner2=3;
         }
-    
+
              // win for subgame3
         for (int i = 0; i < 3; i++)
         {
@@ -347,7 +347,7 @@ int main()
             window.draw(text);
             winner3=3;
         }
-    
+
             // win for subgame4
          for (int i = 3; i < 6; i++)
         {
@@ -412,7 +412,7 @@ int main()
             window.draw(text);
             winner4=3;
         }
-    
+
               // win for subgame5
         for (int i = 3; i < 6; i++)
         {
@@ -475,7 +475,7 @@ int main()
             window.draw(text);
             winner5=3;
         }
-    
+
     // win for subgame6
         for (int i = 3; i < 6; i++)
         {
@@ -540,6 +540,256 @@ int main()
             winner6=3;
 
         }
+        // win for subgame 7
+        for (int i = 6; i < 9; i++)
+        {
+            if (board[i][0] != 0 && board[i][0] == board[i][1] && board[i][1] == board[i][2])
+            {
+                winner7 = board[i][0];
+                break;
+            }
+                for (int j = 0; j < 3; j++)
+            {if (board[6][j] != 0 && board[6][j] == board[7][j] && board[7][j] == board[8][j])
+            {
+                winner7 = board[6][j];
+                break;
+            }}
+        }
+        if (board[6][0] != 0 && board[6][0] == board[7][1] && board[7][1] == board[8][2])
+        {
+            winner7 = board[6][0];
+        }
+        if (board[6][2] != 0 && board[6][2] == board[7][1] && board[7][1] == board[8][0])
+        {
+            winner7 = board[6][2];
+        }
+
+        // If there is a winner, display the winner
+        if (winner7 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner7 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(50, 6*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+        }
+
+        // If the board is full with no winner, it's a tie
+        bool tie7 = true;
+        for (int i = 6; i < 9; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie7 = false;
+                    break;
+                }
+            }
+        }
+        if (tie7)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(50, 6*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner7=3;
+        }
+         // win for subgame8
+        for (int i = 6; i < 9; i++)
+        {
+            if (board[i][3] != 0 && board[i][3] == board[i][4] && board[i][4] == board[i][5])
+            {
+                winner8 = board[i][3];
+                break;
+            }for (int j = 3; j < 6; j++)
+            if (board[6][j] != 0 && board[6][j] == board[7][j] && board[7][j] == board[8][j])
+            {
+                winner8 = board[6][j];
+                break;
+            }
+        }
+        if (board[6][3] != 0 && board[6][3] == board[7][4] && board[7][4] == board[8][5])
+        {
+            winner8 = board[6][3];
+        }
+        if (board[6][5] != 0 && board[6][5] == board[7][4] && board[7][4] == board[8][3])
+        {
+            winner8 = board[6][5];
+        }
+
+        // If there is a winner, display the winner
+        if (winner8 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner8 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(8*50, 6*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+
+        }
+        bool tie8 = true;
+        for (int i = 6; i < 9; i++)
+        {
+            for (int j = 3; j < 6; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie8 = false;
+                    break;
+                }
+            }
+        }
+        if (tie8)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(8*50, 6*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner8=3;
+
+        }
+          // win for subgame9
+        for (int i = 6; i < 9; i++)
+        {
+            if (board[i][6] != 0 && board[i][6] == board[i][7] && board[i][7] == board[i][8])
+            {
+                winner9 = board[i][6];
+                break;
+            }for (int j = 6; j < 9; j++)
+            if (board[6][j] != 0 && board[6][j] == board[7][j] && board[7][j] == board[8][j])
+            {
+                winner9 = board[6][j];
+                break;
+            }
+        }
+        if (board[6][6] != 0 && board[6][6] == board[7][7] && board[7][7] == board[8][8])
+        {
+            winner9 = board[6][6];
+        }
+        if (board[6][8] != 0 && board[6][8] == board[7][7] && board[7][7] == board[8][6])
+        {
+            winner9 = board[6][8];
+        }
+
+        // If there is a winner, display the winner
+        if (winner9 != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner9 == 1 ? "X wins!" : "O wins!");
+            text.setCharacterSize(48);
+            text.setPosition(14*50, 6*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+
+        }
+        bool tie9 = true;
+        for (int i = 6; i < 9; i++)
+        {
+            for (int j = 6; j < 9; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    tie9 = false;
+                    break;
+                }
+            }
+        }
+        if (tie9)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(12*50, 6*120);
+            text.setFillColor(sf::Color::Green);
+            window.draw(text);
+            winner9=3;
+
+        }
+
+        int winner=0;
+        //win for total game
+        if(winner1!=0&&winner1!=3&& winner2==winner1 && winner2==winner3)
+           winner = winner1;
+           else if(winner4!=0&&winner4!=3&& winner4==winner5 && winner5==winner6)
+            winner = winner4;
+           else if(winner7!=0&&winner7!=3&& winner8==winner7 && winner8==winner9)
+            winner = winner7;
+            else if(winner1!=0&&winner1!=3&& winner1==winner4 && winner4==winner7)
+             winner = winner1;
+            else if(winner2!=0&&winner2!=3&& winner2==winner5 && winner5==winner8)
+             winner = winner2;
+            else if(winner3!=0&&winner3!=3&& winner3==winner6 && winner6==winner9)
+             winner = winner3;
+            else if(winner1!=0&&winner1!=3&& winner1==winner5 && winner5==winner9)
+             winner = winner1;
+            else if(winner3!=0&&winner3!=3&& winner3==winner5 && winner5==winner7)
+             winner = winner3;
+
+        // If there is a winner, display the winner and end the game
+        if (winner != 0)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString(winner == 1 ? "X wins the game!" : "O wins the game!");
+            text.setCharacterSize(48);
+            text.setPosition(950, 200);
+            text.setFillColor(sf::Color::Blue);
+            window.draw(text);
+            window.display();
+            sf::sleep(sf::seconds(3));
+            return 0;
+        }
+
+        // If the board is full with no winner, it's a tie
+        bool tie;
+        if(winner==0&& winner1!=0&& winner2!=0&&winner3!=0&&winner4!=0&&winner5!=0&&winner6!=0&&winner7!=0&&winner8!=0&&winner9!=0)
+            tie = true ;
+
+
+        if (tie)
+        {
+            sf::Font font;
+            font.loadFromFile("Resources\\font.ttf");
+            sf::Text text;
+            text.setFont(font);
+            text.setString("It's a tie!");
+            text.setCharacterSize(48);
+            text.setPosition(950, 200);
+            text.setFillColor(sf::Color::Blue);
+            window.draw(text);
+            window.display();
+            sf::sleep(sf::seconds(3));
+            return 0;
+        }
+    // Display everything on the window
+        window.display();}
 
 
 }
