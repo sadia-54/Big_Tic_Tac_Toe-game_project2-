@@ -40,4 +40,13 @@ int main()
     sf::Sprite oSprite(oTexture);
     oSprite.setScale(0.5, 0.5);
 
+        // Create the game board
+    int board[9][9] = {0};
+
+    // Create a variable to keep track of whose turn it is
+    int player = 1;
+
+
+
+
 }
